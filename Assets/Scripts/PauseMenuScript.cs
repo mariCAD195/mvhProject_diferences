@@ -11,7 +11,7 @@ public class PauseMenuScript : MonoBehaviour
 
     public void ReturnToMainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.None;
     }

@@ -9,7 +9,7 @@ public class MenuScript : MonoBehaviour
 
     public void OnPlayClicked()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void OnExitClicked()
