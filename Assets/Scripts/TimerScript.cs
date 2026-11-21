@@ -11,6 +11,8 @@ public class EnvironmentTimer : MonoBehaviour
     
     [SerializeField] private GameObject correct;
     [SerializeField] private GameObject incorrect;
+    
+    [SerializeField] private InteractionScript interactionScript;
     private void Start()
     {
         StartCoroutine(Countdown());
@@ -18,6 +20,7 @@ public class EnvironmentTimer : MonoBehaviour
 
     private IEnumerator Countdown()
     {
+        interactionScript.enabled = false;
         yield return StartCoroutine(RunTimer());
         ChangeEnvironment();
         
@@ -32,9 +35,7 @@ public class EnvironmentTimer : MonoBehaviour
         while (remainingTime > 0)
         {
             timerText.text = Mathf.CeilToInt(remainingTime).ToString();
-
             yield return new WaitForSeconds(1f);
-
             remainingTime--;
         }
 

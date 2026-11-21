@@ -3529,6 +3529,7 @@ MonoBehaviour:
   countdownTime: 30
   correct: {fileID: 556074158}
   incorrect: {fileID: 1674831949}
+  interactionScript: {fileID: 679085160}
 --- !u!1 &1797718558
 GameObject:
   m_ObjectHideFlags: 0
