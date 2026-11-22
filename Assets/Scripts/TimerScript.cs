@@ -16,11 +16,11 @@ public class EnvironmentTimer : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Countdown());
+        interactionScript.AllowInteractions = false;
     }
 
     private IEnumerator Countdown()
     {
-        interactionScript.enabled = false;
         yield return StartCoroutine(RunTimer());
         ChangeEnvironment();
         
@@ -46,6 +46,7 @@ public class EnvironmentTimer : MonoBehaviour
     {
         correct.SetActive(false);
         incorrect.SetActive(true);
+        interactionScript.AllowInteractions = true;
     }
 }
 

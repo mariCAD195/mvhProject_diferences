@@ -28,7 +28,6 @@ public class Item : MonoBehaviour
         }
         else
         {
-            Debug.Log("This item has already been checked");
             return false;
         }
     }
@@ -39,15 +38,20 @@ public class Item : MonoBehaviour
             ReferenceItem.transform.rotation == this.transform.rotation &&
             ReferenceItem.GetComponent<Renderer>()?.sharedMaterial == GetComponent<Renderer>()?.sharedMaterial)
         {
-            Debug.Log("This item is same as original.");
             IsDiscovered = true;
             points--;
+            if (points < 0)
+            {
+                points = 0;
+            }
             pointsText.text = $"points: {points}";
+            
+            PlayerData.Instance.playerPoints = points;
+            
             return true;
         }
         else
         {
-            Debug.Log("You found a difference!");
             FixWrongItem();
             return false;
         }
@@ -59,6 +63,13 @@ public class Item : MonoBehaviour
         this.transform.rotation = ReferenceItem.transform.rotation;
         this.GetComponent<Renderer>().sharedMaterial = ReferenceItem.GetComponent<Renderer>().sharedMaterial;
         points++;
+        if (points < 0)
+        {
+            points = 0;
+        }
+        
+        PlayerData.Instance.playerPoints = points;
+        
         pointsText.text = $"points: {points}";
     }
 }
